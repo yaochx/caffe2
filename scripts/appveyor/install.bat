@@ -2,6 +2,8 @@
 
 @echo Downloading CUDA toolkit 8 ...
 
+if NOT DEFINED USE_CUDA (
+
 appveyor DownloadFile ^
   https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/cuda_8.0.44_windows-exe ^
   -FileName cuda_8.0.44_windows.exe
@@ -23,6 +25,8 @@ copy cuda\bin\cudnn64_5.dll ^
 
 :: Make sure that nvcc is working correctly.
 nvcc -V || exit /b
+
+)
 
 :: Miniconda path for appveyor
 set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%
