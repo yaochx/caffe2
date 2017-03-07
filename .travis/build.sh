@@ -19,14 +19,14 @@ elif [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 #************#
 # OS X build #
 #************#
-  cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DUSE_OPENCV=off && make
+  cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DUSE_OPENCV=off && make -j 4
 else
 #*************#
 # Linux build #
 #*************#
   if [[ $BLAS == 'MKL' ]]; then
-    cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DBLAS=MKL && make
+    cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DBLAS=MKL && make -j 4
   else
-    cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON && make
+    cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON && make -j 4
   fi
 fi
